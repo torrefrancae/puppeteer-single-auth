@@ -1,25 +1,35 @@
 {
-  "name": "puppeteer-single-auth",
+  "name": "api-connect",
   "version": "1.0.0",
-  "description": "",
+  "description": "Helps Developers connecto to API endpoints from different environment",
   "main": "index.js",
   "scripts": {
-    "start": "ts-node src/index.ts",
-    "dev": "nodemon npm start",
-    "build": "tsc"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "dotenvx run --env-file=.env -- npm run dev",
+    "dev": "nodemon --watch 'src/**' --ignore 'src/**/*.spec.ts' --exec ts-node src/index.ts",
+    "start:dev": "dotenvx run --env-file=.env -- npm run dev",
+    "start:stage": "dotenvx run --env-file=.env.stage -- npm run dev",
+    "start:prod": "dotenvx run --env-file=.env.prod -- npm run dev"
   },
-  "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@dotenvx/dotenvx": "dotenvx/dotenvx",
+    "cors": "^2.8.5",
     "dotenv": "^16.4.5",
+    "eslint": "^8.56.0",
     "express": "^4.19.2",
-    "prettier": "^3.3.2",
+    "http-method-enum": "^1.0.0",
+    "nodemon": "^3.0.3",
+    "prettier": "^3.2.4",
+    "promise": "^8.3.0",
     "puppeteer": "^22.10.1"
   },
   "devDependencies": {
+    "@types/cors": "^2.8.17",
     "@types/express": "^4.17.21",
     "@types/node": "^20.14.2",
+    "@types/typescript": "^2.0.0",
     "ts-node": "^10.9.2",
     "typescript": "^5.4.5"
   }
